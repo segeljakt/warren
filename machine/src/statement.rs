@@ -77,7 +77,7 @@ impl StatementBuilder {
                 program.get_structure(*ident, st.len(), reg);
 
                 for i in st {
-                    if visited.get(*i).unwrap_or(false) {
+                    if visited.get(*i).map(|x| *x).unwrap_or(false) {
                         program.unify_value(*i);
                     } else {
                         program.unify_variable(*i);
